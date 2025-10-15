@@ -60,3 +60,76 @@ Open http://localhost:3000 in your browser.
 
 Enter a livestream URL (HLS .m3u8 or MP4) and click Play.
 
+
+Frontend Usage
+
+Stream URL Input: Paste the HLS or MP4 link.
+
+Playback Controls:
+
+Play / Pause
+
+Volume adjustment
+
+Timeline slider to navigate the video
+
+Overlay Controls:
+
+Toggle overlays on/off
+
+Edit or delete overlays
+
+Add new overlays
+
+### Backend API Documentation
+Base URL
+http://localhost:5000/api
+Overlay Endpoints
+
+GET /overlays – List all overlays
+
+POST /overlays – Create a new overlay
+
+{
+  "name": "Live Badge",
+  "type": "text",  // "text" or "shape"
+  "content": "🔴 LIVE",
+  "position": { "x": 20, "y": 20 },
+  "size": { "width": 100, "height": 40 },
+  "zIndex": 2,
+  "opacity": 0.9
+}
+PUT /overlays/{id} – Update overlay by ID
+
+DELETE /overlays/{id} – Delete overlay by ID
+
+Stream Endpoints
+
+POST /stream/start – Start a livestream
+
+{
+  "url": "https://example.com/stream.m3u8",
+  "title": "Livestream Session",
+  "description": "Active livestream"
+}
+POST /stream/stop – Stop livestream
+
+GET /stream/status – Check current stream status
+
+### Supported Formats
+
+HLS streams (.m3u8) – Recommended for live streaming
+
+MP4 files (.mp4) – Recorded video
+
+WebM files (.webm) – Optional
+
+### Suported Fomrat
+RTSP streams are not supported directly in browsers. Convert RTSP to HLS or MP4 for playback.
+
+### Notes
+Ensure the backend is running before starting the frontend.
+
+The frontend dynamically handles HLS streams using hls.js.
+
+Overlays are rendered on top of the video with configurable transparency and positioning.

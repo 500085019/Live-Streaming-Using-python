@@ -49,14 +49,6 @@ npm start
 ###Backend Setup (Python)
 cd backend
 python -m venv venv
-# Activate venv
-# Windows:
-
-
-
-pip install -r requirements.txt
-uvicorn main:app --reload
-
 
 ###Running the App
 
